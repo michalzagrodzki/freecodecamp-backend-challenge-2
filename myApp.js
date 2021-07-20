@@ -40,11 +40,19 @@ app.get("/:word/echo", (req, res) => {
   res.json({ echo: responseParameter });
 });
 
-app.route("/name").get((req, res) => {
-  const firstName = req.query.first;
-  const lastName = req.query.last;
-  const responseQuery = `${firstName} ${lastName}`;
-  res.json({ name: responseQuery });
-});
+app
+  .route("/name")
+  .get((req, res) => {
+    const firstName = req.query.first;
+    const lastName = req.query.last;
+    const responseQuery = `${firstName} ${lastName}`;
+    res.json({ name: responseQuery });
+  })
+  .post((req, res) => {
+    const firstName = req.body.first;
+    const lastName = req.body.last;
+    const responseQuery = `${firstName} ${lastName}`;
+    res.json({ name: responseQuery });
+  });
 
 module.exports = app;
